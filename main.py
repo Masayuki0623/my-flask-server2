@@ -31,7 +31,7 @@ def handle_child_data():
             'Content-Type': 'text/plain; charset=utf-8',
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Headers': '*',
-            'Access-Control-Allow-Methods': 'POST, OPTIONS'
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
         }
 
 
@@ -50,7 +50,13 @@ def handle_feedback():
 
         prompt = build_feedback_prompt(data)
         result = call_gpt(prompt, system_prompt_feedback())
-        return result, 200, {'Content-Type': 'text/plain; charset=utf-8'}
+        return result, 200, {
+            'Content-Type': 'text/plain; charset=utf-8',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
+
 
     except Exception as e:
         traceback.print_exc()
@@ -67,7 +73,13 @@ def handle_ending():
 
         prompt = build_ending_prompt(data)
         result = call_gpt(prompt, system_prompt_ending())
-        return result, 200, {'Content-Type': 'text/plain; charset=utf-8'}
+        return result, 200, {
+            'Content-Type': 'text/plain; charset=utf-8',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+        }
+
 
     except Exception as e:
         traceback.print_exc()

@@ -12,7 +12,8 @@ load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
-CORS(app)  # これが必要！
+CORS(app, origins="*")  # ← これが重要！
+
 @app.route("/")
 def index():
     return f"OpenAIキーの一部: {openai_api_key[:5]}******"
